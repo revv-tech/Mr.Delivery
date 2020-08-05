@@ -16,13 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    graphtemplate.cpp \
+    cola.cpp \
+    filemanager.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    pedido.cpp \
+    threadloader.cpp
 
 HEADERS += \
-    graphtemplate.h \
-    mainwindow.h
+    cola.h \
+    filemanager.h \
+    mainwindow.h \
+    pedido.h \
+    threadloader.h
 
 FORMS += \
     mainwindow.ui
