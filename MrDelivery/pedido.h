@@ -5,7 +5,6 @@
 struct Pedido{
     //Attr.
     QString origen;
-
     Pedido();
 };
 

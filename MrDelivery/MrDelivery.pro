@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cola.cpp \
     filemanager.cpp \
+    grafo.cpp \
     main.cpp \
     mainwindow.cpp \
     pedido.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     cola.h \
     filemanager.h \
+    grafo.h \
     mainwindow.h \
     pedido.h \
     threadloader.h
