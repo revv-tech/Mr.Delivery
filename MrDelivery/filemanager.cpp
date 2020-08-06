@@ -14,7 +14,7 @@ QString FileManager::readFile(QString path){
                 if (line.data()[word] != '\t')
                     content.append(line.data()[word]);
                 else
-                    content.append("; ");
+                    content.append(" ");
                 word++;
             }
             content.append("*");
@@ -60,7 +60,7 @@ void FileManager::writeFileN(QString string, QString path){
 QStringList FileManager::seeDirectory(QString path){
     QStringList files;
     QDir directory(path);
-    files = directory.entryList(QStringList() << "*.txt" << "*.TXT",QDir::Files);
+    files = directory.entryList(QStringList() << "*.json" << "*.JSON",QDir::Files);
     return files;
 }
 
@@ -74,7 +74,7 @@ QStringList FileManager::seeDirectory(QString path){
 void FileManager::fileRelocater(QString path,QString newPath, QString fileName){
     QDir directory(path);
     QDir newDirectory(fileName);
-    if (directory.exists(fileName) and !newDirectory.exists(fileName)){
+    if (directory.exists(fileName)){
         QFile::copy(path+"/"+fileName,newPath+"/"+fileName);
         directory.remove(fileName);
     }else

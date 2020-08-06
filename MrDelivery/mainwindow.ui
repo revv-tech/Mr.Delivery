@@ -6,15 +6,214 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1397</width>
+    <height>968</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="Title">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>10</y>
+      <width>781</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../ImagenesGUI/title.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="GraphManagerScreen">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>150</y>
+      <width>381</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="GraphScreen">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>150</y>
+      <width>381</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="verGrafo">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>150</y>
+      <width>111</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ver grafo</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="costosDesde">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>240</y>
+      <width>111</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Costos Desde</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="todosCaminos">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>320</y>
+      <width>131</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Todos los caminos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hayCamino">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>410</y>
+      <width>111</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hay camino?</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="caminoOp">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>500</y>
+      <width>111</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Camino Optimo</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="recorridoProf">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>580</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Recorrido Profundidad</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="recorridoAnch">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>670</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Recorrido Anchura</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="arbolExpMin">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>760</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arbol Expansion Minima</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="acArtista">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>490</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Activar / Inactivar Arista</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="acVertice">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>580</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Activar / Inactivar Vertice</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="avanzar">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>470</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Avanzar</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="GraphScreen_2">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>550</y>
+      <width>381</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1397</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>

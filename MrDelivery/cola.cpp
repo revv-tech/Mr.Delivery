@@ -4,9 +4,6 @@ bool Cola::isEmpty(){
     return front == nullptr;
 }
 
-
-
-
 void Cola::encolar(Pedido *pedido){
     if (isEmpty())
         front = new Nodo(pedido);
