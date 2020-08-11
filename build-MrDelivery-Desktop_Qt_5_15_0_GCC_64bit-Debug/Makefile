@@ -57,6 +57,7 @@ SOURCES       = ../MrDelivery/cola.cpp \
 		../MrDelivery/grafo.cpp \
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
+		../MrDelivery/parser.cpp \
 		../MrDelivery/pedido.cpp \
 		../MrDelivery/threadloader.cpp moc_mainwindow.cpp
 OBJECTS       = cola.o \
@@ -64,6 +65,7 @@ OBJECTS       = cola.o \
 		grafo.o \
 		main.o \
 		mainwindow.o \
+		parser.o \
 		pedido.o \
 		threadloader.o \
 		moc_mainwindow.o
@@ -282,12 +284,14 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../MrDelivery/filemanager.h \
 		../MrDelivery/grafo.h \
 		../MrDelivery/mainwindow.h \
+		../MrDelivery/parser.h \
 		../MrDelivery/pedido.h \
 		../MrDelivery/threadloader.h ../MrDelivery/cola.cpp \
 		../MrDelivery/filemanager.cpp \
 		../MrDelivery/grafo.cpp \
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
+		../MrDelivery/parser.cpp \
 		../MrDelivery/pedido.cpp \
 		../MrDelivery/threadloader.cpp
 QMAKE_TARGET  = MrDelivery
@@ -741,8 +745,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/cola.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/pedido.h ../MrDelivery/threadloader.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/cola.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/pedido.cpp ../MrDelivery/threadloader.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/cola.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/parser.h ../MrDelivery/pedido.h ../MrDelivery/threadloader.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/cola.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/parser.cpp ../MrDelivery/pedido.cpp ../MrDelivery/threadloader.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../MrDelivery/mainwindow.ui $(DISTDIR)/
 
 
@@ -1204,7 +1208,23 @@ main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		../MrDelivery/threadloader.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../MrDelivery/cola.h \
+		../MrDelivery/pedido.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../MrDelivery/json.hpp \
+		../MrDelivery/filemanager.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDir \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MrDelivery/main.cpp
 
 mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
@@ -1323,15 +1343,34 @@ mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMenuBar \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenubar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmenu.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qaction.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MrDelivery/mainwindow.cpp
+
+parser.o: ../MrDelivery/parser.cpp ../MrDelivery/parser.h \
+		../MrDelivery/json.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parser.o ../MrDelivery/parser.cpp
 
 pedido.o: ../MrDelivery/pedido.cpp ../MrDelivery/pedido.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
@@ -1427,7 +1466,28 @@ threadloader.o: ../MrDelivery/threadloader.cpp ../MrDelivery/threadloader.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../MrDelivery/cola.h \
 		../MrDelivery/pedido.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../MrDelivery/filemanager.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDir \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o threadloader.o ../MrDelivery/threadloader.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

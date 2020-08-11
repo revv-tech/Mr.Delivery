@@ -17,7 +17,7 @@ QString FileManager::readFile(QString path){
                     content.append(" ");
                 word++;
             }
-            content.append("*");
+            content.append("");
         }
         inputFile.close();
     }
@@ -27,7 +27,7 @@ QString FileManager::readFile(QString path){
 }
 
 QStringList FileManager::splitFile(QString text){
-    return text.split("*");
+    return text.split("");
 }
 
 void FileManager::writeFileA(QString string, QString path){

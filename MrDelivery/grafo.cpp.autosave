@@ -37,7 +37,7 @@ int Grafo::indexOfVertice(QString v)
        return -1;
    }
 // Agregar Arista
-void Grafo::agregarArista(int origen, int destino, int peso)
+void Grafo::agregarArista(QString origen, QString destino, int peso)
    {
        int orig = indexOfVertice(origen);
        int dest = indexOfVertice(destino);
