@@ -7,11 +7,11 @@ Grafo::Grafo()
     cantidadVertices = 0;
 
     for (int i = 0 ; i < 100 ; i++){
-        vertices[i] = 0;
+        vertices[i] = "";
         visitados[i] = 0;
 
         for (int j = 0 ; j < 100 ; j++){
-            matriz[i][j] = 0;
+            matriz[i][j] = nullptr;
         }
     }
 }
@@ -37,7 +37,7 @@ int Grafo::indexOfVertice(QString v)
        return -1;
    }
 // Agregar Arista
-void Grafo::agregarArista(int origen, int destino, int peso)
+void Grafo::agregarArista(QString origen, QString destino, Pedido *peso)
    {
        int orig = indexOfVertice(origen);
        int dest = indexOfVertice(destino);

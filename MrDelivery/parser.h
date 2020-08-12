@@ -1,10 +1,13 @@
 #ifndef PARSER_H
 #define PARSER_H
-#include <json.hpp>
-using json = nlohmann::json;
+
+#include "grafo.h"
+
 struct Parser{
-   //Attr.
-    json file;
+
+    static Grafo*structCreator(QString);
+    void readJson();
+
 
 
 };

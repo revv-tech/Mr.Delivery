@@ -1,6 +1,27 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 #include <QString>
+
+struct Pedido{
+    QString origen;
+    QString destino;
+    bool activo;
+    int costo;
+    double km;
+    double tiempo;
+
+    Pedido(QString origen, QString destino, int costo, double km, double tiempo){
+        this->origen = origen;
+        this->destino = destino;
+        this->costo = costo;
+        this->km = km;
+        this->activo = true;
+        this->tiempo = tiempo;
+
+    }
+};
+
+
 struct Vertice{
     int id;
     bool visitado;
@@ -13,17 +34,17 @@ struct Vertice{
 struct Grafo
 {
     int max;
-    int matriz[100][100];
-    int vertices[100];
+    Pedido* matriz[100][100];
+    QString vertices[100];
     bool visitados[100];
     int cantidadVertices;
 
     Grafo();
 
     //Methods
-    int indexOfVertice(int);
-    void agregarVertice(int);
-    void agregarArista(int, int, int);
+    int indexOfVertice(QString);
+    void agregarVertice(QString);
+    void agregarArista(QString, QString, Pedido*);
     void imprimir();
     int minVertex (int[]);
     int* dijkstra(int ) ;
