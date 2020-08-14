@@ -1,34 +1,31 @@
-#include "cola.h"
-
-bool Cola::isEmpty(){
+#include "auxqueue.h"
+bool AuxQueue::isEmpty(){
     return front == nullptr;
 }
-/*
-void Cola::encolar(Pedido *pedido){
+void AuxQueue::encolar(QString v){
     if (isEmpty())
-        front = new Nodo(pedido);
+        front = new NodoAUX(v);
     else {
-        Nodo *actual = front;
+        NodoAUX *actual = front;
         while (actual->nxt != nullptr) {
             actual = actual->nxt;
         }
-        Nodo *nuevo = new Nodo(pedido);
+        NodoAUX *nuevo = new NodoAUX(v);
         actual->nxt = nuevo;
     }
 }
 
-*/
-Nodo *Cola::desencolar(){
+
+NodoAUX *AuxQueue::desencolar(){
     if (isEmpty())
         return nullptr;
     else {
-        Nodo *borrado = front;
+        NodoAUX *borrado = front;
         front = front->nxt;
         borrado->nxt = nullptr;
         return borrado;
     }
 }
-
-Nodo *Cola::verFront(){
+NodoAUX *AuxQueue::verFront(){
     return front;
 }

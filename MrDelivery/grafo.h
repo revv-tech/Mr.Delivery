@@ -1,27 +1,8 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 #include <QString>
-
-struct Pedido{
-    QString origen;
-    QString destino;
-    bool activo;
-    int costo;
-    double km;
-    double tiempo;
-
-    Pedido(QString origen, QString destino, int costo, double km, double tiempo){
-        this->origen = origen;
-        this->destino = destino;
-        this->costo = costo;
-        this->km = km;
-        this->activo = true;
-        this->tiempo = tiempo;
-
-    }
-};
-
-
+#include <dlinklist.h>
+#include "auxqueue.h"
 struct Vertice{
     int id;
     bool visitado;
@@ -34,22 +15,36 @@ struct Vertice{
 struct Grafo
 {
     int max;
-    Pedido* matriz[100][100];
+    int matrizCosto[100][100];
+    float matrizDistancia[100][100];
+    float matrizMinutos[100][100];
+    bool matrizStates[100][100];
     QString vertices[100];
     bool visitados[100];
     int cantidadVertices;
+
 
     Grafo();
 
     //Methods
     int indexOfVertice(QString);
     void agregarVertice(QString);
-    void agregarArista(QString, QString, Pedido*);
+    void agregarArista(QString origen, QString destino, int peso,float km,float minutos);
     void imprimir();
     int minVertex (int[]);
-    int* dijkstra(int ) ;
     void limpiarVisitados();
     void warshall_floyd();
+
+    //Funciones
+    QString printGrafo();
+    //Costos hacia
+    QString CostosHacia(QString vertice);
+    int* inializarDC();
+    //Recorrido por Profundidad
+    QString recorridoProfundidad(QString vertice);
+    //Recorrido por Anchura
+    QString recorridoAnchura(QString vertice);
+    bool verifyConnection(QString v1,QString v2);
 
 };
 

@@ -52,21 +52,21 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../MrDelivery/cola.cpp \
+SOURCES       = ../MrDelivery/auxqueue.cpp \
+		../MrDelivery/cola.cpp \
+		../MrDelivery/dlinklist.cpp \
 		../MrDelivery/filemanager.cpp \
 		../MrDelivery/grafo.cpp \
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
-		../MrDelivery/parser.cpp \
-		../MrDelivery/pedido.cpp \
 		../MrDelivery/threadloader.cpp moc_mainwindow.cpp
-OBJECTS       = cola.o \
+OBJECTS       = auxqueue.o \
+		cola.o \
+		dlinklist.o \
 		filemanager.o \
 		grafo.o \
 		main.o \
 		mainwindow.o \
-		parser.o \
-		pedido.o \
 		threadloader.o \
 		moc_mainwindow.o
 DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -280,19 +280,19 @@ DIST          = ../../../../Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.15.0/gcc_64/mkspecs/features/lex.prf \
-		../MrDelivery/MrDelivery.pro ../MrDelivery/cola.h \
+		../MrDelivery/MrDelivery.pro ../MrDelivery/auxqueue.h \
+		../MrDelivery/cola.h \
+		../MrDelivery/dlinklist.h \
 		../MrDelivery/filemanager.h \
 		../MrDelivery/grafo.h \
 		../MrDelivery/mainwindow.h \
-		../MrDelivery/parser.h \
-		../MrDelivery/pedido.h \
-		../MrDelivery/threadloader.h ../MrDelivery/cola.cpp \
+		../MrDelivery/threadloader.h ../MrDelivery/auxqueue.cpp \
+		../MrDelivery/cola.cpp \
+		../MrDelivery/dlinklist.cpp \
 		../MrDelivery/filemanager.cpp \
 		../MrDelivery/grafo.cpp \
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
-		../MrDelivery/parser.cpp \
-		../MrDelivery/pedido.cpp \
 		../MrDelivery/threadloader.cpp
 QMAKE_TARGET  = MrDelivery
 DESTDIR       = 
@@ -745,8 +745,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/cola.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/parser.h ../MrDelivery/pedido.h ../MrDelivery/threadloader.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/cola.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/parser.cpp ../MrDelivery/pedido.cpp ../MrDelivery/threadloader.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/auxqueue.h ../MrDelivery/cola.h ../MrDelivery/dlinklist.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/threadloader.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/auxqueue.cpp ../MrDelivery/cola.cpp ../MrDelivery/dlinklist.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/threadloader.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../MrDelivery/mainwindow.ui $(DISTDIR)/
 
 
@@ -783,10 +783,10 @@ compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../MrDelivery/mainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../MrDelivery/grafo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
@@ -808,24 +808,28 @@ moc_mainwindow.cpp: ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
@@ -914,8 +918,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-cola.o: ../MrDelivery/cola.cpp ../MrDelivery/cola.h \
-		../MrDelivery/pedido.h \
+auxqueue.o: ../MrDelivery/auxqueue.cpp ../MrDelivery/auxqueue.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
@@ -948,7 +951,48 @@ cola.o: ../MrDelivery/cola.cpp ../MrDelivery/cola.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o auxqueue.o ../MrDelivery/auxqueue.cpp
+
+cola.o: ../MrDelivery/cola.cpp ../MrDelivery/cola.h \
+		../MrDelivery/grafo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cola.o ../MrDelivery/cola.cpp
+
+dlinklist.o: ../MrDelivery/dlinklist.cpp ../MrDelivery/dlinklist.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dlinklist.o ../MrDelivery/dlinklist.cpp
 
 filemanager.o: ../MrDelivery/filemanager.cpp ../MrDelivery/filemanager.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
@@ -1059,6 +1103,8 @@ grafo.o: ../MrDelivery/grafo.cpp ../MrDelivery/grafo.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
@@ -1096,10 +1142,10 @@ grafo.o: ../MrDelivery/grafo.cpp ../MrDelivery/grafo.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o grafo.o ../MrDelivery/grafo.cpp
 
 main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../MrDelivery/grafo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
@@ -1121,24 +1167,28 @@ main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
@@ -1215,9 +1265,6 @@ main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../MrDelivery/cola.h \
-		../MrDelivery/pedido.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
-		../MrDelivery/json.hpp \
 		../MrDelivery/filemanager.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QTextStream \
@@ -1228,10 +1275,10 @@ main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MrDelivery/main.cpp
 
 mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../MrDelivery/grafo.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
@@ -1253,24 +1300,28 @@ mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.15.0/gcc_64/include/QtCore/qobject.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qiterator.h \
@@ -1368,45 +1419,6 @@ mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MrDelivery/mainwindow.cpp
 
-parser.o: ../MrDelivery/parser.cpp ../MrDelivery/parser.h \
-		../MrDelivery/json.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parser.o ../MrDelivery/parser.cpp
-
-pedido.o: ../MrDelivery/pedido.cpp ../MrDelivery/pedido.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qchar.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobal.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qconfig.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtcore-config.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qlogging.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qflags.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qmutex.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringliteral.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringalgorithms.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
-		../../../../Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pedido.o ../MrDelivery/pedido.cpp
-
 threadloader.o: ../MrDelivery/threadloader.cpp ../MrDelivery/threadloader.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QThread \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qthread.h \
@@ -1465,8 +1477,10 @@ threadloader.o: ../MrDelivery/threadloader.cpp ../MrDelivery/threadloader.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../MrDelivery/cola.h \
-		../MrDelivery/pedido.h \
+		../MrDelivery/grafo.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QString \
+		../MrDelivery/dlinklist.h \
+		../MrDelivery/auxqueue.h \
 		../MrDelivery/filemanager.h \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/QFile \
 		../../../../Qt/5.15.0/gcc_64/include/QtCore/qfile.h \

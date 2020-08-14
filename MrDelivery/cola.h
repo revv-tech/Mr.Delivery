@@ -1,13 +1,12 @@
 #ifndef COLA_H
 #define COLA_H
-#include "pedido.h"
+
 struct Nodo{
-    Pedido *pedido;
+    //Pedido *pedido;
     Nodo *nxt;
 
     //Constr.
-    Nodo(Pedido *pedido){
-        this->pedido = pedido;
+    Nodo(){
         this->nxt = nullptr;
     }
 };
@@ -19,7 +18,7 @@ struct Cola{
     }
 
     //Methods
-    void encolar(Pedido *pedido);
+    //void encolar(Pedido *pedido);
     Nodo *desencolar();
     Nodo *verFront();
     bool isEmpty();

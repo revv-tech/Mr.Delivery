@@ -16,22 +16,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    auxqueue.cpp \
     cola.cpp \
+    dlinklist.cpp \
     filemanager.cpp \
     grafo.cpp \
     main.cpp \
     mainwindow.cpp \
-    parser.cpp \
-    pedido.cpp \
     threadloader.cpp
 
 HEADERS += \
+    auxqueue.h \
     cola.h \
+    dlinklist.h \
     filemanager.h \
     grafo.h \
     mainwindow.h \
-    parser.h \
-    pedido.h \
     threadloader.h
 
 FORMS += \
