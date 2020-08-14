@@ -7,6 +7,10 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QDir>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include "grafo.h"
 
 /*
  * FILE MANAGER
@@ -19,6 +23,15 @@ public:
 
     //LEE CADA LINEA DEL ARCHIVO
     static QString readFile(QString path);
+
+    //LEE UN ARCHIVO .JSON
+    static QJsonObject readJsonAux(QString path);
+
+    //LEE Y CREA UN GRAFO SEGUN EL .JSON
+    static Grafo* readJson(QString path);
+
+    //VALIDA EL ESTADO DEL .JSON
+    static bool isJsonOk(QJsonObject json);
 
     //DIVIDE CADA LINEA DEL .TXT Y LO TRANSFORMA EN UNA LISTA QSTRING
     static QStringList splitFile(QString text);

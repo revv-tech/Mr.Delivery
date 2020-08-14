@@ -81,3 +81,78 @@ void FileManager::fileRelocater(QString path,QString newPath, QString fileName){
         qDebug() << "NO EXISTE EL ARCHIVO";
 
 }
+
+QJsonObject FileManager::readJsonAux(QString path){
+    QString text;
+    QFile file;
+    file.setFileName(path);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    text = file.readAll();
+    file.close();
+    QJsonDocument document = QJsonDocument::fromJson(text.toUtf8());
+    QJsonObject obj = document.object();
+
+    return obj;
+}
+
+Grafo* FileManager::readJson(QString path){
+    QJsonObject json = readJsonAux(path);
+    Grafo* grafo = new Grafo();
+    if(isJsonOk(json)){
+        QJsonArray array = json["vertices"].toArray();
+        for (int i = 0; i < array.size(); i++)
+            grafo->agregarVertice(array[i].toString());
+        array = json["aristas"].toArray();
+        for (int i = 0; i < array.size(); i++){
+            QJsonValue obj = array[i];
+            grafo->agregarArista(obj["origen"].toString(), obj["destino"].toString(), obj["activo"].toBool(),obj["costo"].toInt(), obj["km"].toDouble(), obj["minutos"].toDouble());
+        }
+    }
+    return grafo;
+}
+
+bool FileManager::isJsonOk(QJsonObject json){
+    if (json.isEmpty()){
+        qDebug() << "JSON - NO HAY INFORMACION EN EL ARCHIVO JSON";
+        return false;
+    }
+    QJsonArray vertices = json["vertices"].toArray();
+    if (vertices.isEmpty()){
+        qDebug() << "JSON - NO HAY VERTICES PARA CREAR EL GRAFO";
+        return false;
+    }
+    for (int i = 0; i < vertices.size(); i++){
+        if (!vertices[i].isString()){
+            qDebug() << "JSON - LOS VERTICES NO SIGUEN EL FORMATO INDICADO";
+            return false;
+        }
+    }
+    QJsonArray aristas = json["aristas"].toArray();
+    if (aristas.isEmpty()){
+        qDebug() << "JSON - NO HAY ARISTAS PARA CREAR EL GRAFO";
+        return false;
+    }
+    for (int i = 0; i < aristas.size(); i++){
+        QJsonValue obj = aristas[i];
+        if (!obj["origen"].isString() || !vertices.contains(obj["origen"].toString()) || !obj["destino"].isString() || !vertices.contains(obj["destino"].toString()) || !obj["activo"].isBool() || !obj["costo"].isDouble() || !obj["km"].isDouble() || !obj["minutos"].isDouble()){
+            qDebug() << "JSON - LAS ARISTAS NO SIGUEN EL FORMATO DE INDICADO O HAY ARISTAS QUE CONECTAN EN VERTICES INEXISTENTES";
+            return false;
+        }
+    }
+    qDebug() << "JSON - VALIDACION COMPLETADA : JSON EN PERFECTO ESTADO - CREANDO EL GRAFO";
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

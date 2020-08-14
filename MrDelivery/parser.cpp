@@ -2,7 +2,7 @@
 using json = nlohmann::json;
 #include "parser.h"
 
-Grafo *Parser::structCreator(QString file){
+/*Grafo *Parser::structCreator(QString file){
     std::string utf8_text = file.toUtf8().constData();
     json j = json::parse(utf8_text);
     Grafo *nuevo = new Grafo();
@@ -17,4 +17,4 @@ Grafo *Parser::structCreator(QString file){
 
     }
     return nuevo;
-}
+}*/
