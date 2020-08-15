@@ -1,25 +1,29 @@
 #ifndef COLA_H
 #define COLA_H
-#include "pedido.h"
+#include "grafo.h"
+#include <QMutex>
 struct Nodo{
-    Pedido *pedido;
+    Grafo *pedido;
     Nodo *nxt;
 
     //Constr.
-    Nodo(Pedido *pedido){
+    Nodo(Grafo *pedido){
         this->pedido = pedido;
         this->nxt = nullptr;
     }
 };
 struct Cola{
     Nodo *front;
+    QMutex *m;
 
-    Cola(){
+    Cola(){}
+    Cola(QMutex *m){
         front = nullptr;
+        this->m = m;
     }
 
     //Methods
-    void encolar(Pedido *pedido);
+    void encolar(Grafo *pedido);
     Nodo *desencolar();
     Nodo *verFront();
     bool isEmpty();

@@ -107,8 +107,9 @@ Grafo* FileManager::readJson(QString path){
             QJsonValue obj = array[i];
             grafo->agregarArista(obj["origen"].toString(), obj["destino"].toString(), obj["activo"].toBool(),obj["costo"].toInt(), obj["km"].toDouble(), obj["minutos"].toDouble());
         }
+        return grafo;
     }
-    return grafo;
+    return nullptr;
 }
 
 bool FileManager::isJsonOk(QJsonObject json){

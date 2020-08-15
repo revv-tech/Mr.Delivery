@@ -2,6 +2,7 @@
 #define GRAFO_H
 #include <QString>
 #include "auxqueue.h"
+#include "simplelist.h"
 struct Vertice{
     int id;
     bool visitado;
@@ -21,7 +22,11 @@ struct Grafo
     QString vertices[100];
     bool visitados[100];
     int cantidadVertices;
-
+    
+    //Attr. de Recorrido
+    QString verticesUtilizados[100];
+    int cantCostoCamino = 0;
+    
 
     Grafo();
 
@@ -48,6 +53,8 @@ struct Grafo
     void desacVertices(QString v);
     //Desactiva aristas
     void desacAristas(QString v1,QString v2);
+    //Avanzar
+    QString avanzar(QString v1);
 };
 
 #endif // GRAFO_H

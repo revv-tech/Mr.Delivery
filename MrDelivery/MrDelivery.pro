@@ -18,22 +18,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     auxqueue.cpp \
     cola.cpp \
+    deliveryapp.cpp \
     filemanager.cpp \
     grafo.cpp \
     main.cpp \
     mainwindow.cpp \
     parser.cpp \
     pedido.cpp \
+    simplelist.cpp \
     threadloader.cpp
 
 HEADERS += \
     auxqueue.h \
     cola.h \
+    deliveryapp.h \
     filemanager.h \
     grafo.h \
     mainwindow.h \
     parser.h \
     pedido.h \
+    simplelist.h \
     threadloader.h
 
 FORMS += \

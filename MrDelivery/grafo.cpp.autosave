@@ -235,6 +235,9 @@ void Grafo::desacAristas(QString v1, QString v2){
         matrizStates[i][j] = !matrizStates[i][j];
 }
 
-//
+//Recorrer
+QString Grafo::avanzar(QString v1){
+    
+}
 
 

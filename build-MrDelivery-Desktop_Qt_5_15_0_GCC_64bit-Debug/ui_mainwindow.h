@@ -40,6 +40,10 @@ public:
     QPushButton *acVertice;
     QPushButton *avanzar;
     QTextEdit *GraphScreen_2;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QTextEdit *V1;
+    QTextEdit *V2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -89,13 +93,25 @@ public:
         acArtista->setGeometry(QRect(1220, 490, 171, 61));
         acVertice = new QPushButton(centralwidget);
         acVertice->setObjectName(QString::fromUtf8("acVertice"));
-        acVertice->setGeometry(QRect(1220, 580, 181, 61));
+        acVertice->setGeometry(QRect(1210, 570, 181, 61));
         avanzar = new QPushButton(centralwidget);
         avanzar->setObjectName(QString::fromUtf8("avanzar"));
         avanzar->setGeometry(QRect(670, 470, 171, 61));
         GraphScreen_2 = new QTextEdit(centralwidget);
         GraphScreen_2->setObjectName(QString::fromUtf8("GraphScreen_2"));
-        GraphScreen_2->setGeometry(QRect(560, 550, 381, 301));
+        GraphScreen_2->setGeometry(QRect(570, 560, 381, 301));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(60, 330, 141, 111));
+        pushButton_2 = new QPushButton(centralwidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(70, 470, 111, 111));
+        V1 = new QTextEdit(centralwidget);
+        V1->setObjectName(QString::fromUtf8("V1"));
+        V1->setGeometry(QRect(1100, 700, 121, 71));
+        V2 = new QTextEdit(centralwidget);
+        V2->setObjectName(QString::fromUtf8("V2"));
+        V2->setGeometry(QRect(1100, 780, 121, 71));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -125,6 +141,8 @@ public:
         acArtista->setText(QCoreApplication::translate("MainWindow", "Activar / Inactivar Arista", nullptr));
         acVertice->setText(QCoreApplication::translate("MainWindow", "Activar / Inactivar Vertice", nullptr));
         avanzar->setText(QCoreApplication::translate("MainWindow", "Avanzar", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Start Graph", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
     } // retranslateUi
 
 };

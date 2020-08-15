@@ -4,7 +4,7 @@ bool Cola::isEmpty(){
     return front == nullptr;
 }
 
-void Cola::encolar(Pedido *pedido){
+void Cola::encolar(Grafo *pedido){
     if (isEmpty())
         front = new Nodo(pedido);
     else {
