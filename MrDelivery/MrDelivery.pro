@@ -26,7 +26,8 @@ SOURCES += \
     parser.cpp \
     pedido.cpp \
     simplelist.cpp \
-    threadloader.cpp
+    threadloader.cpp \
+    visitedlist.cpp
 
 HEADERS += \
     auxqueue.h \
@@ -38,7 +39,8 @@ HEADERS += \
     parser.h \
     pedido.h \
     simplelist.h \
-    threadloader.h
+    threadloader.h \
+    visitedlist.h
 
 FORMS += \
     mainwindow.ui

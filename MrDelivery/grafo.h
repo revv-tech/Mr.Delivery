@@ -2,6 +2,7 @@
 #define GRAFO_H
 #include <QString>
 #include "auxqueue.h"
+#include "visitedlist.h"
 struct Vertice{
     int id;
     bool visitado;
@@ -48,6 +49,13 @@ struct Grafo
     void desacVertices(QString v);
     //Desactiva aristas
     void desacAristas(QString v1,QString v2);
+    //Saber si un vertice tiene camino hacia los demas vertices del grafo
+    bool hasPath(int vertex);
+    //Saber si el grafo es conexo (Todos los vertices tienen camino a los demas caminos)
+    bool hasPath();
+    //Compara un VisitedList con el array de vertices
+    bool compareLists(VisitedList* visitados);
+
 };
 
 #endif // GRAFO_H

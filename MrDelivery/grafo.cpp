@@ -236,5 +236,35 @@ void Grafo::desacAristas(QString v1, QString v2){
 }
 
 //
+bool Grafo::hasPath(int vertex){
+    VisitedList* visitados = new VisitedList();
+    visitados->add(vertex);
+    while (!visitados->isComplete()){
+        vertex = visitados->getFirst()->id;
+        for (int i = 0; i < cantidadVertices; i++){
+            if (matrizStates[vertex][i] == true && !visitados->isHere(i))
+                visitados->add(i);
+        }
+        visitados->setVisited(vertex);
+    }
+    return compareLists(visitados);
+}
+
+bool Grafo::compareLists(VisitedList *visitados){
+    for (int i = 0; i < cantidadVertices; i++){
+        if (!visitados->isHere(i)){
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Grafo::hasPath(){
+    for (int i = 0; i <= cantidadVertices; i++){
+        if (!hasPath(i))
+            return false;
+    }
+    return true;
+}
 
 

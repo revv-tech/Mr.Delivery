@@ -14,14 +14,13 @@ int main(int argc, char *argv[])
     thread->__init__(nullptr,"/home/rev/Documents/GitHub/Mr.Delivery");
     thread->run();
     */
-    /*Grafo* file = FileManager::readJson("/home/rev/Documents/GitHub/Mr.Delivery/DirectoryJson/p2.json");
-    file->imprimir();
-    */
+    /*Grafo* file = FileManager::readJson("/home/thelopezepol/Escritorio/C++/ED S1 2020/Mr.Delivery/DirectoryJson/pconexo.json");
+    qDebug() << file->hasPath(0);*/
     //qDebug() << file->recorridoAnchura("A");
     //qDebug() << file->recorridoProfundidad("B");
 
-    QApplication a(argc, argv);
+    /*QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    return a.exec();
+    return a.exec();*/
 }
