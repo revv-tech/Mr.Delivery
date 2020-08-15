@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
     thread->__init__(nullptr,"/home/rev/Documents/GitHub/Mr.Delivery");
     thread->run();
     */
-    /*Grafo* file = FileManager::readJson("/home/thelopezepol/Escritorio/C++/ED S1 2020/Mr.Delivery/DirectoryJson/pconexo.json");
-    qDebug() << file->hasPath(0);*/
+    Grafo* file = FileManager::readJson("/home/thelopezepol/Escritorio/C++/ED S1 2020/Mr.Delivery/DirectoryJson/pconexo.json");
+    qDebug() << file->hasPath();
     //qDebug() << file->recorridoAnchura("A");
     //qDebug() << file->recorridoProfundidad("B");
 

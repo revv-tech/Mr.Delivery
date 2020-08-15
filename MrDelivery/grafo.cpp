@@ -260,7 +260,7 @@ bool Grafo::compareLists(VisitedList *visitados){
 }
 
 bool Grafo::hasPath(){
-    for (int i = 0; i <= cantidadVertices; i++){
+    for (int i = 0; i < cantidadVertices; i++){
         if (!hasPath(i))
             return false;
     }
