@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     parser.cpp \
+    path.cpp \
     pedido.cpp \
     simplelist.cpp \
     threadloader.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     grafo.h \
     mainwindow.h \
     parser.h \
+    path.h \
     pedido.h \
     simplelist.h \
     threadloader.h \

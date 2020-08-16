@@ -3,6 +3,7 @@
 #include <QString>
 #include "auxqueue.h"
 #include "visitedlist.h"
+#include "path.h"
 struct Vertice{
     int id;
     bool visitado;
@@ -55,6 +56,10 @@ struct Grafo
     bool hasPath();
     //Compara un VisitedList con el array de vertices
     bool compareLists(VisitedList* visitados);
+    //Retorna el camino mas eficiente segun un int parametro y 2 ints para el vertice de inicio y llegada
+    QString pathFrom(int start, int end, int idx);
+    //Saca el vertice con menos distancia
+    int minDistance(int dist[], bool sptSet[]);
 
 };
 

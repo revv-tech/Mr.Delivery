@@ -60,6 +60,7 @@ SOURCES       = ../MrDelivery/auxqueue.cpp \
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
 		../MrDelivery/parser.cpp \
+		../MrDelivery/path.cpp \
 		../MrDelivery/pedido.cpp \
 		../MrDelivery/simplelist.cpp \
 		../MrDelivery/threadloader.cpp \
@@ -72,6 +73,7 @@ OBJECTS       = auxqueue.o \
 		main.o \
 		mainwindow.o \
 		parser.o \
+		path.o \
 		pedido.o \
 		simplelist.o \
 		threadloader.o \
@@ -261,6 +263,7 @@ DIST          = /home/thelopezepol/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.pr
 		../MrDelivery/grafo.h \
 		../MrDelivery/mainwindow.h \
 		../MrDelivery/parser.h \
+		../MrDelivery/path.h \
 		../MrDelivery/pedido.h \
 		../MrDelivery/simplelist.h \
 		../MrDelivery/threadloader.h \
@@ -272,6 +275,7 @@ DIST          = /home/thelopezepol/Qt/5.15.0/gcc_64/mkspecs/features/spec_pre.pr
 		../MrDelivery/main.cpp \
 		../MrDelivery/mainwindow.cpp \
 		../MrDelivery/parser.cpp \
+		../MrDelivery/path.cpp \
 		../MrDelivery/pedido.cpp \
 		../MrDelivery/simplelist.cpp \
 		../MrDelivery/threadloader.cpp \
@@ -659,8 +663,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/thelopezepol/Qt/5.15.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/auxqueue.h ../MrDelivery/cola.h ../MrDelivery/deliveryapp.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/parser.h ../MrDelivery/pedido.h ../MrDelivery/simplelist.h ../MrDelivery/threadloader.h ../MrDelivery/visitedlist.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MrDelivery/auxqueue.cpp ../MrDelivery/cola.cpp ../MrDelivery/deliveryapp.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/parser.cpp ../MrDelivery/pedido.cpp ../MrDelivery/simplelist.cpp ../MrDelivery/threadloader.cpp ../MrDelivery/visitedlist.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/auxqueue.h ../MrDelivery/cola.h ../MrDelivery/deliveryapp.h ../MrDelivery/filemanager.h ../MrDelivery/grafo.h ../MrDelivery/mainwindow.h ../MrDelivery/parser.h ../MrDelivery/path.h ../MrDelivery/pedido.h ../MrDelivery/simplelist.h ../MrDelivery/threadloader.h ../MrDelivery/visitedlist.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MrDelivery/auxqueue.cpp ../MrDelivery/cola.cpp ../MrDelivery/deliveryapp.cpp ../MrDelivery/filemanager.cpp ../MrDelivery/grafo.cpp ../MrDelivery/main.cpp ../MrDelivery/mainwindow.cpp ../MrDelivery/parser.cpp ../MrDelivery/path.cpp ../MrDelivery/pedido.cpp ../MrDelivery/simplelist.cpp ../MrDelivery/threadloader.cpp ../MrDelivery/visitedlist.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../MrDelivery/mainwindow.ui $(DISTDIR)/
 
 
@@ -814,6 +818,7 @@ moc_mainwindow.cpp: ../MrDelivery/mainwindow.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex \
 		moc_predefs.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/bin/moc
@@ -911,6 +916,7 @@ cola.o: ../MrDelivery/cola.cpp ../MrDelivery/cola.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cola.o ../MrDelivery/cola.cpp
 
@@ -977,6 +983,7 @@ deliveryapp.o: ../MrDelivery/deliveryapp.cpp ../MrDelivery/deliveryapp.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deliveryapp.o ../MrDelivery/deliveryapp.cpp
 
@@ -1070,7 +1077,8 @@ filemanager.o: ../MrDelivery/filemanager.cpp ../MrDelivery/filemanager.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qjsonarray.h \
 		../MrDelivery/grafo.h \
 		../MrDelivery/auxqueue.h \
-		../MrDelivery/visitedlist.h
+		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filemanager.o ../MrDelivery/filemanager.cpp
 
 grafo.o: ../MrDelivery/grafo.cpp ../MrDelivery/grafo.h \
@@ -1108,6 +1116,7 @@ grafo.o: ../MrDelivery/grafo.cpp ../MrDelivery/grafo.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qdebug.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qalgorithms.h \
@@ -1262,6 +1271,7 @@ main.o: ../MrDelivery/main.cpp ../MrDelivery/mainwindow.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
@@ -1409,6 +1419,7 @@ mainwindow.o: ../MrDelivery/mainwindow.cpp ../MrDelivery/mainwindow.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex \
 		ui_mainwindow.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QVariant \
@@ -1481,8 +1492,12 @@ parser.o: ../MrDelivery/parser.cpp nlohmann/json.hpp \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qstringview.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/qstringbuilder.h \
 		../MrDelivery/auxqueue.h \
-		../MrDelivery/visitedlist.h
+		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parser.o ../MrDelivery/parser.cpp
+
+path.o: ../MrDelivery/path.cpp ../MrDelivery/path.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o path.o ../MrDelivery/path.cpp
 
 pedido.o: ../MrDelivery/pedido.cpp ../MrDelivery/pedido.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
@@ -1616,6 +1631,7 @@ threadloader.o: ../MrDelivery/threadloader.cpp ../MrDelivery/threadloader.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QString \
 		../MrDelivery/auxqueue.h \
 		../MrDelivery/visitedlist.h \
+		../MrDelivery/path.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QMutex \
 		../MrDelivery/filemanager.h \
 		/home/thelopezepol/Qt/5.15.0/gcc_64/include/QtCore/QFile \
