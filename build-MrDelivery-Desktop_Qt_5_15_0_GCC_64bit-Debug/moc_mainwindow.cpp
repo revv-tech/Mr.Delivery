@@ -36,22 +36,22 @@ QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(2, 33, 0), // ""
 QT_MOC_LITERAL(3, 34, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(4, 58, 19), // "on_caminoOp_clicked"
-QT_MOC_LITERAL(5, 78, 7), // "checked"
-QT_MOC_LITERAL(6, 86, 20), // "on_acArtista_clicked"
-QT_MOC_LITERAL(7, 107, 20), // "on_acVertice_clicked"
-QT_MOC_LITERAL(8, 128, 24), // "on_recorridoAnch_clicked"
-QT_MOC_LITERAL(9, 153, 22), // "on_costosDesde_clicked"
-QT_MOC_LITERAL(10, 176, 18), // "on_avanzar_clicked"
-QT_MOC_LITERAL(11, 195, 20) // "on_hayCamino_clicked"
+QT_MOC_LITERAL(4, 58, 20), // "on_acArtista_clicked"
+QT_MOC_LITERAL(5, 79, 20), // "on_acVertice_clicked"
+QT_MOC_LITERAL(6, 100, 24), // "on_recorridoAnch_clicked"
+QT_MOC_LITERAL(7, 125, 7), // "checked"
+QT_MOC_LITERAL(8, 133, 22), // "on_costosDesde_clicked"
+QT_MOC_LITERAL(9, 156, 18), // "on_avanzar_clicked"
+QT_MOC_LITERAL(10, 175, 20), // "on_hayCamino_clicked"
+QT_MOC_LITERAL(11, 196, 19) // "on_caminoOp_clicked"
 
     },
     "MainWindow\0on_pushButton_clicked\0\0"
-    "on_pushButton_2_clicked\0on_caminoOp_clicked\0"
-    "checked\0on_acArtista_clicked\0"
+    "on_pushButton_2_clicked\0on_acArtista_clicked\0"
     "on_acVertice_clicked\0on_recorridoAnch_clicked\0"
-    "on_costosDesde_clicked\0on_avanzar_clicked\0"
-    "on_hayCamino_clicked"
+    "checked\0on_costosDesde_clicked\0"
+    "on_avanzar_clicked\0on_hayCamino_clicked\0"
+    "on_caminoOp_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,22 +71,22 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: name, argc, parameters, tag, flags
        1,    0,   59,    2, 0x08 /* Private */,
        3,    0,   60,    2, 0x08 /* Private */,
-       4,    1,   61,    2, 0x08 /* Private */,
-       6,    0,   64,    2, 0x08 /* Private */,
-       7,    0,   65,    2, 0x08 /* Private */,
+       4,    0,   61,    2, 0x08 /* Private */,
+       5,    0,   62,    2, 0x08 /* Private */,
+       6,    1,   63,    2, 0x08 /* Private */,
        8,    1,   66,    2, 0x08 /* Private */,
-       9,    1,   69,    2, 0x08 /* Private */,
-      10,    0,   72,    2, 0x08 /* Private */,
-      11,    0,   73,    2, 0x08 /* Private */,
+       9,    0,   69,    2, 0x08 /* Private */,
+      10,    0,   70,    2, 0x08 /* Private */,
+      11,    0,   71,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,    5,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,    5,
-    QMetaType::Void, QMetaType::Bool,    5,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -101,13 +101,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
         case 1: _t->on_pushButton_2_clicked(); break;
-        case 2: _t->on_caminoOp_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 3: _t->on_acArtista_clicked(); break;
-        case 4: _t->on_acVertice_clicked(); break;
-        case 5: _t->on_recorridoAnch_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->on_costosDesde_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 7: _t->on_avanzar_clicked(); break;
-        case 8: _t->on_hayCamino_clicked(); break;
+        case 2: _t->on_acArtista_clicked(); break;
+        case 3: _t->on_acVertice_clicked(); break;
+        case 4: _t->on_recorridoAnch_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: _t->on_costosDesde_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->on_avanzar_clicked(); break;
+        case 7: _t->on_hayCamino_clicked(); break;
+        case 8: _t->on_caminoOp_clicked(); break;
         default: ;
         }
     }

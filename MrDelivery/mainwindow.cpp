@@ -51,16 +51,6 @@ void MainWindow::on_pushButton_2_clicked()
     app->start();
 }
 
-void MainWindow::on_caminoOp_clicked(bool checked)
-{
-    if (!x){
-        if (checked){
-            QString v1 = ui->V1->toPlainText();
-            QString v2 = ui->V2->toPlainText();
-            //QString msg = app->tmp->
-        }
-    }
-}
 
 void MainWindow::on_acArtista_clicked()
 {
@@ -130,6 +120,12 @@ void MainWindow::on_caminoOp_clicked()
 {
     ui->GraphScreen_2->clear();
     QString msg = "";
-    msg.append(app->tmp->pathFrom(0,0,0));
+    QString v1 = ui->V1->toPlainText();
+    QString v2 = ui->V2->toPlainText();
+    QString Rubro = ui->rubro->toPlainText();
+    int i = v1.toInt();
+    int j =  v2.toInt();
+    int k =  Rubro.toInt();
+    msg.append(app->tmp->pathFrom(i,j,k));
     ui->GraphScreen_2->setText(msg);
 }
