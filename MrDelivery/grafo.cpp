@@ -16,6 +16,7 @@ Grafo::Grafo()
             matrizDistancia[i][j] = 0.0;
             matrizMinutos[i][j] = 0.0;
             matrizStates[i][j] = false;
+            matrizStatesCHECKER[i][j] = false;
         }
     }
 }
@@ -51,6 +52,7 @@ void Grafo::agregarArista(QString origen, QString destino, bool activo, int peso
         matrizDistancia[orig][dest] = km;
         matrizMinutos[orig][dest] = minutos;
         matrizStates[orig][dest] = activo;
+        matrizStatesCHECKER[orig][dest] = activo;
     }
 }
 
@@ -164,7 +166,7 @@ bool Grafo::verifyConnection(QString v1, QString v2){
     int i = indexOfVertice(v1);
     int j = indexOfVertice(v2);
 
-    if (matrizStates[i][j])
+    if (matrizStatesCHECKER[i][j])
         return true;
     return false;
 }
@@ -214,7 +216,14 @@ QString Grafo::recorridoProfundidad(QString vertice){
     queue->encolar(vertice);
 
     while(!queue->isEmpty()){
-
+        int s = indexOfVertice(queue->verFront()->vert);
+        queue->desencolar();
+        if (!visitados[s])
+            msg = msg + vertices[s] + "\n";
+        for (int i = 0 ; i < cantidadVertices ; ++i){
+            if (!visitados[i] and matrizStates[s][i])
+                queue->encolar(vertices[i]);
+        }
     }
     return msg;
 }
@@ -223,8 +232,11 @@ QString Grafo::recorridoProfundidad(QString vertice){
 void Grafo::desacVertices(QString v){
     int i = indexOfVertice(v);
     for (int j = 0 ; j < cantidadVertices ; ++j){
-        if (verifyConnection(v,vertices[i]))
+        //qDebug() << v << " " << vertices[j] << " " <<matrizStates[i][j];
+        if (verifyConnection(v,vertices[j])){
             matrizStates[i][j] = !matrizStates[i][j];
+            qDebug() << v << " " << vertices[j] << " " <<matrizStates[i][j];
+        }
     }
 }
 //Desactiva Aristas
@@ -232,6 +244,7 @@ void Grafo::desacAristas(QString v1, QString v2){
     int i = indexOfVertice(v1);
     int j = indexOfVertice(v2);
     if (verifyConnection(v1,v2))
+        qDebug() << v1 << " " << v2 << " " << matrizStates[i][j];
         matrizStates[i][j] = !matrizStates[i][j];
 }
 
@@ -267,4 +280,59 @@ bool Grafo::hasPath(){
     return true;
 }
 
+//Get Paths
+/*
+SimpleList *Grafo::getPaths(QString vertice, QString destino){
+    SimpleList *lista = new SimpleList();
+    //Marcar todos los vertices como no visitados
+    limpiarVisitados();
+    // Create an array to store paths
+    int *path = new int[100];
+    // Initialize path[] as empty
+    int index = 0;
+    pathExist=false;
+    int v1 = indexOfVertice(vertice);
+    int v2 = indexOfVertice(destino);
+    // Call the recursive helper function to print all paths
+    getPathsAux(v1,v2,path,index);
+}
 
+int Grafo::getPathsAux(int v1, int v2, int *path, int index){
+    visitados[v1] = true;
+    path[index] = v1;
+    index++;
+
+    if (v1 == v2){
+        int i;
+        if (!pathExist)
+            qDebug() << "Paths de " << path[index] << " hasta " << path[index-1];
+        pathExist = true;
+        for (int i = 0 ; i <index-1 ; i++)
+            qDebug() << path[i] << "->";
+        qDebug() << path[i] << Qt::endl;
+    }
+    else {
+
+    }
+}
+*/
+
+//Avanzar
+QString Grafo::avanzar(QString v1,QString v2){
+    int i = indexOfVertice(v1);
+    int j = indexOfVertice(v2);
+    QString msg = "";
+
+    if (matrizStates[i][j]){
+        costo = costo + matrizCosto[i][j];
+        msg = msg + "Has usado el arista: " + vertices[i] +" -> "+ vertices[j] + "\n";
+        msg = msg + "El costo es de: " + QString::number(matrizCosto[i][j]) + "\n";
+        msg = msg + "Total: " + QString::number(costo);
+        return msg;
+    }
+    else {
+        msg = msg + "Invalido";
+        return msg;
+    }
+
+}

@@ -28,14 +28,12 @@ public:
     QLabel *Title;
     QTextEdit *GraphManagerScreen;
     QTextEdit *GraphScreen;
-    QPushButton *verGrafo;
     QPushButton *costosDesde;
     QPushButton *todosCaminos;
     QPushButton *hayCamino;
     QPushButton *caminoOp;
     QPushButton *recorridoProf;
     QPushButton *recorridoAnch;
-    QPushButton *arbolExpMin;
     QPushButton *acArtista;
     QPushButton *acVertice;
     QPushButton *avanzar;
@@ -44,6 +42,8 @@ public:
     QPushButton *pushButton_2;
     QTextEdit *V1;
     QTextEdit *V2;
+    QLabel *label;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,9 +64,6 @@ public:
         GraphScreen = new QTextEdit(centralwidget);
         GraphScreen->setObjectName(QString::fromUtf8("GraphScreen"));
         GraphScreen->setGeometry(QRect(560, 150, 381, 301));
-        verGrafo = new QPushButton(centralwidget);
-        verGrafo->setObjectName(QString::fromUtf8("verGrafo"));
-        verGrafo->setGeometry(QRect(300, 150, 111, 61));
         costosDesde = new QPushButton(centralwidget);
         costosDesde->setObjectName(QString::fromUtf8("costosDesde"));
         costosDesde->setGeometry(QRect(300, 240, 111, 61));
@@ -85,9 +82,6 @@ public:
         recorridoAnch = new QPushButton(centralwidget);
         recorridoAnch->setObjectName(QString::fromUtf8("recorridoAnch"));
         recorridoAnch->setGeometry(QRect(270, 670, 171, 61));
-        arbolExpMin = new QPushButton(centralwidget);
-        arbolExpMin->setObjectName(QString::fromUtf8("arbolExpMin"));
-        arbolExpMin->setGeometry(QRect(270, 760, 171, 61));
         acArtista = new QPushButton(centralwidget);
         acArtista->setObjectName(QString::fromUtf8("acArtista"));
         acArtista->setGeometry(QRect(1220, 490, 171, 61));
@@ -108,10 +102,146 @@ public:
         pushButton_2->setGeometry(QRect(70, 470, 111, 111));
         V1 = new QTextEdit(centralwidget);
         V1->setObjectName(QString::fromUtf8("V1"));
-        V1->setGeometry(QRect(1100, 700, 121, 71));
+        V1->setGeometry(QRect(1010, 560, 111, 41));
         V2 = new QTextEdit(centralwidget);
         V2->setObjectName(QString::fromUtf8("V2"));
-        V2->setGeometry(QRect(1100, 780, 121, 71));
+        V2->setGeometry(QRect(1010, 610, 111, 41));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(970, 570, 21, 17));
+        QPalette palette;
+        QBrush brush(QColor(238, 238, 236, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        QBrush brush1(QColor(255, 255, 255, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Light, brush1);
+        QBrush brush2(QColor(246, 246, 245, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Midlight, brush2);
+        QBrush brush3(QColor(119, 119, 118, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Dark, brush3);
+        QBrush brush4(QColor(159, 159, 157, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Mid, brush4);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        QBrush brush5(QColor(0, 0, 0, 255));
+        brush5.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush5);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette.setBrush(QPalette::Active, QPalette::Shadow, brush5);
+        palette.setBrush(QPalette::Active, QPalette::AlternateBase, brush2);
+        QBrush brush6(QColor(255, 255, 220, 255));
+        brush6.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
+        palette.setBrush(QPalette::Active, QPalette::ToolTipText, brush5);
+        QBrush brush7(QColor(238, 238, 236, 128));
+        brush7.setStyle(Qt::SolidPattern);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush7);
+#endif
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Midlight, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Dark, brush3);
+        palette.setBrush(QPalette::Inactive, QPalette::Mid, brush4);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush5);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Shadow, brush5);
+        palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
+        palette.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush5);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush7);
+#endif
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Midlight, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Dark, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Mid, brush4);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Shadow, brush5);
+        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
+        palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush5);
+        QBrush brush8(QColor(0, 0, 0, 128));
+        brush8.setStyle(Qt::SolidPattern);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush8);
+#endif
+        label->setPalette(palette);
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(970, 620, 21, 17));
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Light, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Midlight, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::Dark, brush3);
+        palette1.setBrush(QPalette::Active, QPalette::Mid, brush4);
+        palette1.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush5);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Shadow, brush5);
+        palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::ToolTipBase, brush6);
+        palette1.setBrush(QPalette::Active, QPalette::ToolTipText, brush5);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush7);
+#endif
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Light, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Midlight, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Dark, brush3);
+        palette1.setBrush(QPalette::Inactive, QPalette::Mid, brush4);
+        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush5);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Shadow, brush5);
+        palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush6);
+        palette1.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush5);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush7);
+#endif
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Light, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Midlight, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Dark, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Mid, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Shadow, brush5);
+        palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush6);
+        palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush5);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush8);
+#endif
+        label_2->setPalette(palette1);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -130,19 +260,19 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         Title->setText(QString());
-        verGrafo->setText(QCoreApplication::translate("MainWindow", "Ver grafo", nullptr));
         costosDesde->setText(QCoreApplication::translate("MainWindow", "Costos Desde", nullptr));
         todosCaminos->setText(QCoreApplication::translate("MainWindow", "Todos los caminos", nullptr));
         hayCamino->setText(QCoreApplication::translate("MainWindow", "Hay camino?", nullptr));
         caminoOp->setText(QCoreApplication::translate("MainWindow", "Camino Optimo", nullptr));
         recorridoProf->setText(QCoreApplication::translate("MainWindow", "Recorrido Profundidad", nullptr));
         recorridoAnch->setText(QCoreApplication::translate("MainWindow", "Recorrido Anchura", nullptr));
-        arbolExpMin->setText(QCoreApplication::translate("MainWindow", "Arbol Expansion Minima", nullptr));
         acArtista->setText(QCoreApplication::translate("MainWindow", "Activar / Inactivar Arista", nullptr));
         acVertice->setText(QCoreApplication::translate("MainWindow", "Activar / Inactivar Vertice", nullptr));
         avanzar->setText(QCoreApplication::translate("MainWindow", "Avanzar", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Start Graph", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "V1", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "V2", nullptr));
     } // retranslateUi
 
 };

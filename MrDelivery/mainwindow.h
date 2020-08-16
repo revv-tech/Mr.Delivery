@@ -32,6 +32,10 @@ private slots:
 
     void on_costosDesde_clicked(bool checked);
 
+    void on_avanzar_clicked();
+
+    void on_hayCamino_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

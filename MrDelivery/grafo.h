@@ -2,7 +2,11 @@
 #define GRAFO_H
 #include <QString>
 #include "auxqueue.h"
+#include "simplelist.h"
 #include "visitedlist.h"
+#include <QQueue>
+#include <list>
+#include<iostream>
 struct Vertice{
     int id;
     bool visitado;
@@ -15,15 +19,19 @@ struct Vertice{
 struct Grafo
 {
     int max;
+
     int matrizCosto[100][100];
     double matrizDistancia[100][100];
     double matrizMinutos[100][100];
     bool matrizStates[100][100];
+    bool matrizStatesCHECKER[100][100];
     QString vertices[100];
     bool visitados[100];
     int cantidadVertices;
-
-
+    bool pathExist;
+    QList<int> *adj;
+    //AVanzar
+    int costo = 0;
     Grafo();
 
     //Methods
@@ -55,6 +63,11 @@ struct Grafo
     bool hasPath();
     //Compara un VisitedList con el array de vertices
     bool compareLists(VisitedList* visitados);
+    //Avanzar
+    QString avanzar(QString v1,QString v2);
+    //Get Paths
+    SimpleList *getPaths(QString vertice, QString destino);
+    int getPathsAux(int v1, int v2, int path[],int index);
 
 };
 
