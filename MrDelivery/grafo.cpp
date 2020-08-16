@@ -140,9 +140,9 @@ QString Grafo::CostosHacia(QString vertice){
     visitados[node] = true;
     distanciasCortas[node] = 0;
     for (int i = 0; i < cantidadVertices; i++) {
-        if (matrizCosto[i][node] != 0)
+        if (matrizCosto[node][i] != 0)
             // como sí hay camino, coloca el peso
-            distanciasCortas[i] = matrizCosto[i][node];
+            distanciasCortas[i] = matrizCosto[node][i];
         else /// si no, infinito
             distanciasCortas[i] = 999999;
     }
@@ -150,13 +150,12 @@ QString Grafo::CostosHacia(QString vertice){
         int next = minVertex(distanciasCortas);
         visitados[next] = true;
         for (int j = 0 ; j < cantidadVertices ; j++){
-            int d = distanciasCortas[next] + matrizCosto[j][next];
-            if (distanciasCortas[j] > d and matrizCosto[j][next] > 0)
-                distanciasCortas[j] = distanciasCortas[next] + matrizCosto[j][next];
+            int d = distanciasCortas[next] + matrizCosto[next][j];
+            if (distanciasCortas[j] > d and matrizCosto[next][j] > 0)
+                distanciasCortas[j] = distanciasCortas[next] + matrizCosto[next][j];
         }
     }
-
-
+    distanciasCortas[node] = 0;
     for (int i = 0; i < cantidadVertices; i++){
         msg = msg + vertices[i] + " " +  QString::number(distanciasCortas[i]) + "\n";
     }

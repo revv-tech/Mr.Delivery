@@ -23,7 +23,6 @@ SOURCES += \
     grafo.cpp \
     main.cpp \
     mainwindow.cpp \
-    parser.cpp \
     path.cpp \
     pedido.cpp \
     simplelist.cpp \
@@ -37,7 +36,6 @@ HEADERS += \
     filemanager.h \
     grafo.h \
     mainwindow.h \
-    parser.h \
     path.h \
     pedido.h \
     simplelist.h \
