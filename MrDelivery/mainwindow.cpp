@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     sample_palette.setColor(QPalette::WindowText, Qt::white);
     //BACKGROUND----------------------------------------------------------------
     resize(QDesktopWidget().availableGeometry(this).size() * 0.80);
-    QPixmap bgnd("/home/rev/Documents/GitHub/Mr.Delivery/ImagenesGUI/bk.jpeg");
+    QPixmap bgnd("/home/thelopezepol/Escritorio/C++/ED S1 2020/Mr.Delivery/ImagenesGUI/bk.jpeg");
     bgnd = bgnd.scaled(this->size(),Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background,bgnd);
@@ -47,7 +47,7 @@ void MainWindow::on_pushButton_clicked(){
 void MainWindow::on_pushButton_2_clicked()
 {
     app = new DeliveryApp();
-    app->preStart("/home/rev/Documents/GitHub/Mr.Delivery");
+    app->preStart("/home/thelopezepol/Escritorio/C++/ED S1 2020/Mr.Delivery");
     app->start();
 }
 
@@ -124,4 +124,12 @@ void MainWindow::on_hayCamino_clicked(){
                 msg = "True";
             }
             ui->GraphScreen_2->setText(msg);
+}
+
+void MainWindow::on_caminoOp_clicked()
+{
+    ui->GraphScreen_2->clear();
+    QString msg = "";
+    msg.append(app->tmp->pathFrom(0,0,0));
+    ui->GraphScreen_2->setText(msg);
 }

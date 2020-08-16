@@ -36,6 +36,8 @@ private slots:
 
     void on_hayCamino_clicked();
 
+    void on_caminoOp_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
