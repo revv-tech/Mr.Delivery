@@ -68,6 +68,10 @@ struct Grafo
     //Get Paths
     SimpleList *getPaths(QString vertice, QString destino);
     int getPathsAux(int v1, int v2, int path[],int index);
+    //Retorna el camino mas eficiente segun un int parametro y 2 ints para el vertice de inicio y llegada
+    QString pathFrom(int start, int end, int idx);
+    //Saca el vertice con menos distancia
+    int minDistance(int dist[], bool sptSet[]);
 
 };
 

@@ -336,3 +336,53 @@ QString Grafo::avanzar(QString v1,QString v2){
     }
 
 }
+
+QString Grafo::pathFrom(int start, int end, int idx){
+    int dist[cantidadVertices];
+
+    bool sptSet[cantidadVertices];
+
+    for (int i = 0; i < cantidadVertices; i++)
+        dist[i] = INT_MAX, sptSet[i] = false;
+
+    dist[start] = 0;
+
+    for (int count = 0; count < cantidadVertices - 1; count++) {
+
+        int u = minDistance(dist, sptSet);
+
+        sptSet[u] = true;
+
+        for (int v = 0; v < cantidadVertices; v++)
+
+            switch(idx){
+            case 0:
+                if (!sptSet[v] && matrizCosto[u][v] && dist[u] != INT_MAX && dist[u] + matrizCosto[u][v] < dist[v])
+                    dist[v] = dist[u] + matrizCosto[u][v];
+                break;
+            case 1:
+                if (!sptSet[v] && matrizDistancia[u][v] && dist[u] != INT_MAX && dist[u] + matrizDistancia[u][v] < dist[v])
+                    dist[v] = dist[u] + matrizDistancia[u][v];
+                break;
+            case 2:
+                if (!sptSet[v] && matrizMinutos[u][v] && dist[u] != INT_MAX && dist[u] + matrizMinutos[u][v] < dist[v])
+                    dist[v] = dist[u] + matrizMinutos[u][v];
+                break;
+            default:
+                break;
+            }
+    }
+
+    return "Distance from " + QString::number(end) + " to " + QString::number(start) + " is: " + QString::number(dist[end]);
+}
+
+int Grafo::minDistance(int dist[], bool sptSet[])
+{
+    int min = INT_MAX, min_index;
+
+    for (int v = 0; v < cantidadVertices; v++)
+        if (sptSet[v] == false && dist[v] <= min)
+            min = dist[v], min_index = v;
+
+    return min_index;
+}
